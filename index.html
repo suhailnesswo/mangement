@@ -1,127 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Document Management FO  NESSWO</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <h1>Google Drive Document Management</h1>
+    <header>
+        <nav>
+            <a href=""><img src="image/circular_cropped_logo.png"></a>
+            <a href="">Home</a>
+            <a href="">Contacts</a>
+            <a href="">Info</a>
+        </nav>
+    </header>
 
-    <input type="file" id="fileInput" />
-    <button onclick="uploadFile()">Upload File</button>
-    <br><br>
+    <!-- carousel -->
+    <div class="carousel">
+        <!-- list item -->
+        <div class="list">
+            <div class="item">
+                <img src="image/IMG-20181031-WA0050.jpg">
+                <div class="content">
+                    <div class="author">NESSWO</div>
+                    <div class="title">National Educational Society And </div>
+                    <div class="topic">Social Welfare Organisation</div>
+                    <div class="des">
+                        It has given me immense pleasure to see the growth of NESSWO International School Anantnag over the years. I am happy to note that its efforts are in keeping with the aim of the NESSWO International School Anantnag that all schools bearing the name “NESSWO International School ” must provide the highest quality of education
+                    </div>
+                    <div class="buttons">
+                        <button>SEE MORE</button>
+                        <button>SUBSCRIBE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/IMG-20181111-WA0010.jpg">
+                <div class="content">
+                    <div class="author">NESSWO</div>
+                    <div class="title">National Educational Society And </div>
+                    <div class="topic">Social Welfare Organisation</div>
+                    <div class="des">
+                        It has given me immense pleasure to see the growth of NESSWO International School Anantnag over the years. I am happy to note that its efforts are in keeping with the aim of the NESSWO International School Anantnag that all schools bearing the name “NESSWO International School ” must provide the highest quality of education
+                    </div>
+                    <div class="buttons">
+                        <button>SEE MORE</button>
+                        <button>SUBSCRIBE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/nt.jpeg">
+                <div class="content">
+                    <div class="author">NESSWO</div>
+                    <div class="title">National Educational Society And</div>
+                    <div class="topic"> Social Welfare Organisation</div>
+                    <div class="des">
+                        It has given me immense pleasure to see the growth of NESSWO International School Anantnag over the years. I am happy to note that its efforts are in keeping with the aim of the NESSWO International School Anantnag that all schools bearing the name “NESSWO International School ” must provide the highest quality of education
+                    </div>
+                    <div class="buttons">
+                        <button>SEE MORE</button>
+                        <button>SUBSCRIBE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/WhatsApp-Image-2019-06-10-at-5.01.41-AM.jpeg">
+                <div class="content">
+                    <div class="author">NESSWO</div>
+                    <div class="title">National Educational Society And </div>
+                    <div class="topic">Social Welfare Organisation</div>
+                    <div class="des">
+                        It has given me immense pleasure to see the growth of NESSWO International School Anantnag over the years. I am happy to note that its efforts are in keeping with the aim of the NESSWO International School Anantnag that all schools bearing the name “NESSWO International School ” must provide the highest quality of education
+                    </div>
+                    <div class="buttons">
+                        <button>SEE MORE</button>
+                        <button>SUBSCRIBE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- list thumnail -->
+        <div class="thumbnail">
+            <div class="item">
+                <img src="image/IMG-20181031-WA0050.jpg">
+                <div class="content">
+                    <div class="title">
+                        Name Slider
+                    </div>
+                    <div class="description">
+                        Description
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/IMG-20181111-WA0010.jpg">
+                <div class="content">
+                    <div class="title">
+                        Name Slider
+                    </div>
+                    <div class="description">
+                        Description
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/WhatsApp-Image-2019-06-10-at-5.01.41-AM.jpeg">
+                <div class="content">
+                    <div class="title">
+                        Name Slider
+                    </div>
+                    <div class="description">
+                        Description
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/WhatsApp-Image-2019-06-10-at-5.01.41-AM.jpeg">
+                <div class="content">
+                    <div class="title">
+                        Name Slider
+                    </div>
+                    <div class="description">
+                        Description
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- next prev -->
 
-    <input type="text" id="searchQuery" placeholder="Search files">
-    <button onclick="searchFiles()">Search</button>
-    <br><br>
+        <div class="arrows">
+            <button id="prev"><</button>
+            <button id="next">></button>
+        </div>
+        <!-- time running -->
+        <div class="time"></div>
+    </div>
 
-    <ul id="fileList"></ul>
-
-
-    <script src="script.js">
-        const CLIENT_ID = 'YOUR_CLIENT_ID';
-        const API_KEY = 'YOUR_API_KEY';
-        const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
-        const SCOPES = 'https://www.googleapis.com/auth/drive';
-
-        function handleClientLoad() {
-            gapi.load('client:auth2', initClient);
-        }
-
-        function initClient() {
-            gapi.client.init({
-                apiKey: API_KEY,
-                clientId: CLIENT_ID,
-                discoveryDocs: DISCOVERY_DOCS,
-                scope: SCOPES
-            }).then(() => {
-                gapi.auth2.getAuthInstance().signIn();
-            });
-        }
-
-        function uploadFile() {
-            const fileInput = document.getElementById('fileInput');
-            const file = fileInput.files[0];
-
-            const metadata = {
-                'name': file.name,
-                'mimeType': file.type
-            };
-
-            const form = new FormData();
-            form.append('metadata', new Blob([JSON.stringify(metadata)], { type: 'application/json' }));
-            form.append('file', file);
-
-            fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
-                method: 'POST',
-                headers: new Headers({ 'Authorization': 'Bearer ' + gapi.auth.getToken().access_token }),
-                body: form,
-            }).then(response => response.json())
-                .then(file => {
-                    console.log(file);
-                    alert('File uploaded successfully.');
-                });
-        }
-
-        function searchFiles() {
-            const query = document.getElementById('searchQuery').value;
-            gapi.client.drive.files.list({
-                'q': name ,contains: '${query}',
-                'pageSize': 10,
-                'fields': "nextPageToken, files(id, name)"
-            }).then(response => {
-                const files = response.result.files;
-                const fileList = document.getElementById('fileList');
-                fileList.innerHTML = '';
-
-                if (files && files.length > 0) {
-                    files.forEach(file => {
-                        const li = document.createElement('li');
-                        li.textContent = file.name;
-                        const deleteButton = document.createElement('button');
-                        deleteButton.textContent = 'Delete';
-                        deleteButton.onclick = () => deleteFile(file.id);
-                        const downloadButton = document.createElement('button');
-                        downloadButton.textContent = 'Download';
-                        downloadButton.onclick = () => downloadFile(file.id);
-                        li.appendChild(deleteButton);
-                        li.appendChild(downloadButton);
-                        fileList.appendChild(li);
-                    });
-                } else {
-                    fileList.textContent = 'No files found.';
-                }
-            });
-        }
-
-        function deleteFile(fileId) {
-            gapi.client.drive.files.delete({
-                'fileId': fileId
-            }).then(() => {
-                alert('File deleted successfully.');
-                searchFiles();
-            });
-        }
-
-        function downloadFile(fileId) {
-            gapi.client.drive.files.get({
-                fileId: fileId,
-                alt: 'media'
-            }).then(response => {
-                const blob = new Blob([response.body], { type: response.headers['Content-Type'] });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'downloaded-file';
-                a.click();
-            });
-        }
-
-        handleClientLoad();
-    </script>
+    <script src="app.js"></script>
 </body>
-
 </html>
+
+
+
